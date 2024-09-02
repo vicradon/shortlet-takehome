@@ -22,3 +22,16 @@ You can run the application directly on your local machine or using Docker.
 ## Testing
 
 The application has a single unit test that verifies that the API returns the current time in JSON format. You can run the tests by running `go test`
+
+
+## Update Kubeconfig after provisioning
+
+```
+aws eks update-kubeconfig --region us-east-1 --name  my-cluster
+```
+
+For GKE
+
+```
+gcloud container clusters get-credentials gke-test-1 --zone us-central1 --project shortlet-takehome
+```

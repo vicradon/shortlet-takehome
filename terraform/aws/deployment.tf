@@ -6,7 +6,6 @@ resource "kubernetes_deployment" "timeapi" {
     }
   }
 
-
   spec {
     replicas = 3
 
