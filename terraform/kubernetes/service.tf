@@ -1,4 +1,4 @@
-resource "kubernetes_service" "timeapi-service" {
+resource "kubernetes_service" "timeapi_service" {
   metadata {
     name = "timeapi-service"
   }
@@ -13,4 +13,3 @@ resource "kubernetes_service" "timeapi-service" {
     type = "LoadBalancer"
   }
 }
-

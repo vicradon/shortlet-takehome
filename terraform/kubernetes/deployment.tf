@@ -1,6 +1,7 @@
 resource "kubernetes_deployment" "timeapi" {
   metadata {
     name = "timeapi-deployment"
+    # namespace = kubernetes_namespace.timeapi_namespace.name
     labels = {
       app = "timeapi"
     }

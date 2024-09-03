@@ -14,6 +14,6 @@ output "kubernetes_cluster_name" {
 }
 
 output "kubectl_configuration_command" {
-  value = "gcloud container clusters get-credentials ${google_container_cluster.primary.name} --zone ${var.region} --project ${var.project_id}"
+  value       = "gcloud container clusters get-credentials ${google_container_cluster.primary.name} --zone ${var.region} --project ${var.project_id}"
   description = "The configuration command of gcloud run"
 }
