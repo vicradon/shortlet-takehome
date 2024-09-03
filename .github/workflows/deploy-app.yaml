@@ -4,29 +4,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  terraform:
-    name: Terraform Apply
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
-
-      - name: Install Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Terraform Init
-        run: terraform init
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
-
   build:
     name: Docker Build & Push
     runs-on: ubuntu-latest
@@ -50,6 +27,30 @@ jobs:
         run: |
           docker build -t ${{ secrets.GCP_PROJECT_ID }}/time-api:${{ github.sha }} .
           docker push ${{ secrets.GCP_PROJECT_ID }}/time-api:${{ github.sha }}
+
+  terraform:
+    name: Terraform Apply
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+
 
   deploy:
     name: Deploy to GKE

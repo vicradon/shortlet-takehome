@@ -33,5 +33,9 @@ aws eks update-kubeconfig --region us-east-1 --name  my-cluster
 For GKE
 
 ```
-gcloud container clusters get-credentials gke-test-1 --zone us-central1 --project shortlet-takehome
+gcloud container clusters get-credentials shortlet-takehome-gke --zone us-central1 --project shortlet-takehome
 ```
+
+
+
+gcloud container clusters get-credentials shortlet-cluster --zone us-central1 --project gke-terraform-project-434408
