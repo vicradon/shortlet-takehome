@@ -40,7 +40,7 @@ resource "google_container_node_pool" "primary_nodes" {
       env = var.project_id
     }
 
-    machine_type = "e2-micro"
+    machine_type = "e2-small"
     disk_size_gb = "10"
     tags         = ["gke-node", "${var.project_id}-gke"]
     metadata = {
