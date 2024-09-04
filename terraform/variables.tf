@@ -20,3 +20,7 @@ variable "project_id" {
 variable "region" {
   description = "region"
 }
+
+variable "certmanager_email" {
+  description = "Email address used for ACME registration"
+}
