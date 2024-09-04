@@ -31,7 +31,7 @@ resource "kubernetes_deployment" "timeapi" {
 
       spec {
         container {
-          image = "vicradon/current-time:latest"
+          image = "vicradon/timeapi:latest"
           name  = "timeapi"
 
           port {
