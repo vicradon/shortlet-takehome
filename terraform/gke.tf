@@ -30,6 +30,10 @@ resource "google_container_node_pool" "primary_nodes" {
   version    = data.google_container_engine_versions.gke_version.release_channel_latest_version["STABLE"]
   node_count = var.gke_num_nodes
 
+  node_locations = [
+    "${var.region}-a",
+  ]
+
   node_config {
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",
@@ -40,7 +44,7 @@ resource "google_container_node_pool" "primary_nodes" {
       env = var.project_id
     }
 
-    machine_type = "e2-small"
+    machine_type = "e2-medium"
     disk_size_gb = "10"
     tags         = ["gke-node", "${var.project_id}-gke"]
     metadata = {

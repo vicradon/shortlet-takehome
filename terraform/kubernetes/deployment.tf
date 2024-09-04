@@ -7,8 +7,14 @@ resource "kubernetes_deployment" "timeapi" {
     }
   }
 
+  timeouts {
+    update = "5m"
+    create = "5m"
+    delete = "5m"
+  }
+
   spec {
-    replicas = 3
+    replicas = 1
 
     selector {
       match_labels = {
@@ -34,11 +40,11 @@ resource "kubernetes_deployment" "timeapi" {
 
           resources {
             limits = {
-              cpu    = "0.5"
+              cpu    = "100m"
               memory = "512Mi"
             }
             requests = {
-              cpu    = "250m"
+              cpu    = "50m"
               memory = "50Mi"
             }
           }
