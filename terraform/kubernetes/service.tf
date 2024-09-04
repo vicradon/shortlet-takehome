@@ -1,6 +1,7 @@
 resource "kubernetes_service" "timeapi_service" {
   metadata {
     name = "timeapi-service"
+    namespace = kubernetes_namespace.timeapi_namespace.metadata[0].name
   }
   spec {
     selector = {

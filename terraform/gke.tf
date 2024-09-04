@@ -10,7 +10,6 @@ data "google_container_cluster" "shortlet_cluster" {
   location = var.region
 }
 
-
 resource "google_container_cluster" "primary" {
   name     = "${var.project_id}-gke"
   location = var.region
