@@ -35,6 +35,9 @@ jobs:
   terraform:
     name: Terraform Apply
     runs-on: ubuntu-latest
+    needs: [build-and-push]
+    env:
+      terraform_dir: terraform
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -54,7 +57,11 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        run: terraform init
+        run: |
+          cd $terraform_dir
+          terraform init
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: |
+          cd $terraform_dir
+          terraform apply -auto-approve
