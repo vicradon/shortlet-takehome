@@ -38,6 +38,10 @@ jobs:
     needs: [build-and-push]
     env:
       terraform_dir: terraform
+      GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+      GCP_REGION: ${{ vars.GCP_REGION }}
+      CERT_MANAGER_EMAIL: ${{ vars.CERT_MANAGER_EMAIL }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -55,6 +59,13 @@ jobs:
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
+
+      - name: Create tfvars file
+        run: |
+          cd $terraform_dir
+          echo "project_id = $GCP_PROJECT_ID > terraform.tfvars
+          echo "region = $GCP_REGION >> terraform.tfvars
+          echo "cert_manager_email = $CERT_MANAGER_EMAIL >> terraform.tfvars
 
       - name: Terraform Init
         run: |
