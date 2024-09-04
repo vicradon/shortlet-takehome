@@ -43,8 +43,8 @@ jobs:
       CERT_MANAGER_EMAIL: ${{ vars.CERT_MANAGER_EMAIL }}
 
     steps:
-      # - name: Checkout repository
-      #   uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       # - id: "auth"
       #   uses: "google-github-actions/auth@v2"
