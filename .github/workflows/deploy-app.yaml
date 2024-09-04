@@ -41,6 +41,7 @@ jobs:
       GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
       GCP_REGION: ${{ vars.GCP_REGION }}
       CERT_MANAGER_EMAIL: ${{ vars.CERT_MANAGER_EMAIL }}
+      GCP_CREDENTIALS: "${{ secrets.GCP_CREDENTIALS }}"
 
     steps:
       - name: Checkout repository
@@ -49,7 +50,7 @@ jobs:
       - id: "auth"
         uses: "google-github-actions/auth@v2"
         with:
-          credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
+          credentials_json: "$GCP_CREDENTIALS"
 
       - name: "Set up Cloud SDK"
         uses: "google-github-actions/setup-gcloud@v2"
@@ -59,6 +60,11 @@ jobs:
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
+
+      - name: Create terraform credentials file
+        run: |
+          cd $terraform_dir
+          echo "$GCP_CREDENTIALS" > terraform_credentials.json
 
       - name: Create tfvars file
         run: |
