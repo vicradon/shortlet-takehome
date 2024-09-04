@@ -23,19 +23,8 @@ You can run the application directly on your local machine or using Docker.
 
 The application has a single unit test that verifies that the API returns the current time in JSON format. You can run the tests by running `go test`
 
+## Running without remote backend
 
-## Update Kubeconfig after provisioning
-
-```
-aws eks update-kubeconfig --region us-east-1 --name  my-cluster
-```
-
-For GKE
-
-```
-gcloud container clusters get-credentials shortlet-takehome-gke --zone us-central1 --project shortlet-takehome
-```
-
-
-
-gcloud container clusters get-credentials shortlet-cluster --zone us-central1 --project gke-terraform-project-434408
+1. Delete the terraform/backend.tf
+2. Run terraform init
+3.
