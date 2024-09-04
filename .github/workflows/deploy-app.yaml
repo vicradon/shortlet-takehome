@@ -65,9 +65,7 @@ jobs:
           cd $terraform_dir
           echo "project_id = \"$GCP_PROJECT_ID\"" > terraform.tfvars
           echo "region = \"$GCP_REGION\"" >> terraform.tfvars
-          echo "cert_manager_email = \"$CERT_MANAGER_EMAIL\"" >> terraform.tfvars
-
-          echo "$(realpath terraform.tfvars)"; cat "$(realpath terraform.tfvars)"
+          echo "certmanager_email = \"$CERT_MANAGER_EMAIL\"" >> terraform.tfvars
 
       - name: Terraform Init
         run: |
@@ -77,5 +75,4 @@ jobs:
       - name: Terraform Apply
         run: |
           cd $terraform_dir
-          echo "$(realpath terraform.tfvars)"; cat "$(realpath terraform.tfvars)"
           terraform apply -auto-approve
