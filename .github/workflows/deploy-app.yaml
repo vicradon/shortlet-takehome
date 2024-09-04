@@ -63,9 +63,9 @@ jobs:
       - name: Create tfvars file
         run: |
           cd $terraform_dir
-          echo "project_id = $GCP_PROJECT_ID > terraform.tfvars
-          echo "region = $GCP_REGION >> terraform.tfvars
-          echo "cert_manager_email = $CERT_MANAGER_EMAIL >> terraform.tfvars
+          echo "project_id = $GCP_PROJECT_ID" > terraform.tfvars
+          echo "region = $GCP_REGION" >> terraform.tfvars
+          echo "cert_manager_email = $CERT_MANAGER_EMAIL" >> terraform.tfvars
 
       - name: Terraform Init
         run: |
