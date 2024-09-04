@@ -63,7 +63,7 @@ jobs:
       - name: Create terraform credentials file
         run: |
           cd $terraform_dir
-          echo "${{ secrets.GCP_CREDENTIALS }}" > terraform_credentials.json
+          echo '${{ secrets.GCP_CREDENTIALS }}' > terraform_credentials.json
           cat terraform_credentials.json
 
       # - name: Create tfvars file
